@@ -214,15 +214,15 @@ def test_events_to_daily_metrics_revenue_matches_manual_sum(events, daily):
 
 
 # --- Anomaly detection: injected bugs are actually caught -------------------
-# These are the honesty-critical tests: the detector must catch the
-# injected bugs on REAL, untuned thresholds (z_threshold=3.5, the
-# standard Iglewicz & Hoaglin default) -- not thresholds picked to make
-# this specific dataset pass, which would be circular and dishonest.
+# These are the key detection tests: the detector must catch the
+# injected bugs on standard, untuned thresholds (z_threshold=3.5, the
+# Iglewicz & Hoaglin default) -- not thresholds picked to make
+# this specific dataset pass, which would be circular.
 
 def test_anomaly_detection_catches_tracking_outage(daily):
     """The detector should catch the outage promptly (the first day, and
     most of the window) — but NOT necessarily every single day. This is
-    an honest, documented limitation of rolling-baseline anomaly
+    a documented property of rolling-baseline anomaly
     detection: by the later days of a sustained outage, the rolling
     14-day window itself starts to include the outage's own earlier
     zero-value days, which pulls the baseline down and can shrink the

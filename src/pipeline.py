@@ -13,7 +13,7 @@ from anomaly_detection import events_to_daily_metrics, detect_anomalies, root_ca
 def run():
     print("=== Generating synthetic webshop tracking events ===")
     events = generate_events(seed=42)
-    print(f"  {len(events)} events across 5 markets, 60 days (not real BIRKENSTOCK data)\n")
+    print(f"  {len(events)} events across 5 markets, 60 days (synthetic data)\n")
 
     print("=== Tracking QA: Missing Required Parameters ===")
     violations = check_missing_required_params(events)

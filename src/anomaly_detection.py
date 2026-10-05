@@ -1,6 +1,5 @@
-"""Anomaly detection on daily metrics derived from the event stream —
-the posting's "Run anomaly detection on key metrics, investigating root
-causes and proposing corrective actions" task.
+"""Anomaly detection on daily metrics derived from the event stream,
+supporting investigation of root causes and corrective actions.
 
 Method: a rolling-median + MAD (median absolute deviation) z-score,
 computed per market so each market's own baseline and volatility is used
@@ -75,7 +74,7 @@ def detect_anomalies(daily_df, metric="add_to_cart", z_threshold=3.5, window=14)
     z_threshold=3.5 is a standard, conservative choice for MAD-based
     outlier detection (commonly cited default, e.g. Iglewicz & Hoaglin) —
     not tuned to make this dataset's known-injected bugs pass, which
-    would be circular. It's checked honestly against them afterward.
+    would be circular. It's checked against them afterward.
     """
     results = []
     for market, group in daily_df.groupby("market"):
@@ -91,7 +90,7 @@ def detect_anomalies(daily_df, metric="add_to_cart", z_threshold=3.5, window=14)
 
 
 def root_cause_summary(anomaly_row):
-    """Simple, honest triage hints based on directly observable signals
+    """Simple triage hints based on directly observable signals
     in the row itself — not a black-box diagnosis.
     """
     hints = []

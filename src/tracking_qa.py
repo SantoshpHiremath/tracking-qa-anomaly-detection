@@ -1,8 +1,6 @@
 """Automated tracking QA checks: validates event data against expected
-schema/business rules, and flags missing or broken tracking parameters —
-the posting's "Build automated checks for missing or broken tracking
-parameters" and "design, document, and execute test cases for new
-tracking implementations" tasks.
+schema/business rules, and flags missing or broken tracking parameters.
+Supports test cases for new tracking implementations.
 """
 from collections import defaultdict
 
